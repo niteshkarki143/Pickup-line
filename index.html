@@ -8,9 +8,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         function downloadAPK() {
-            // Replace this URL with your actual Google Drive direct download link
             const downloadUrl = 'https://drive.google.com/file/d/1kCf7jmMG5ZWgIUmS_9F20MHYS1yIJmj3/view?usp=sharing';
             window.location.href = downloadUrl;
+            return false;
+        }
+
+        function contactDeveloper() {
+            const email = 'nitesh.karki772@gmail.com';
+            const subject = 'PickupPro App Inquiry';
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+            
+            // Try to open email client
+            window.location.href = mailtoLink;
+            
+            // Show backup message after a short delay
+            setTimeout(() => {
+                if (!document.hasFocus()) return; // User switched to email client
+                alert('If your email client didn\'t open, you can:\n\n' +
+                      '1. Email: nitesh.karki772@gmail.com\n' +
+                      '2. Telegram: @NITESH_KARKI');
+            }, 1000);
+            
             return false;
         }
     </script>
@@ -23,7 +41,7 @@
                 <span>PickupPro</span>
             </div>
             <div class="contact-btn">
-                <a href="mailto:nitesh.karki772@gmail.com" class="btn">Contact Developer</a>
+                <a href="#" onclick="return contactDeveloper();" class="btn">Contact Developer</a>
             </div>
         </nav>
     </header>
